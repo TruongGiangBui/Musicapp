@@ -1,0 +1,52 @@
+#:include kv/homescreen.kv
+#:include kv/loginscreen.kv
+#:include kv/listening.kv
+#:include kv/history.kv
+#:include kv/search.kv
+#:import utils kivy.utils
+
+GridLayout:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#FFFFFF")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    cols:1
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#4BB864")
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(0, 0), (0, 0), (12, 12), (12, 12)]
+        rows:1
+        pos_hint: {"top":.1,"left":1}
+        size_hint: 1,0.48
+
+        Image:
+            source:"icons/icon.png"
+            pos_hint: {"top":.95,"center_x":0.5}
+            size_hint: .9,.9
+
+
+
+    ScreenManager:
+        pos_hint: {"top":76,"left":1}
+        id: screen_manager
+        LoginScreen:
+            name: "login_screen"
+            id: login_screen
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+        SearchScreen:
+            name: "search_screen"
+            id: search_screen
+        ListeningScreen
+            name: "listening_screen"
+            id: listening_screen
+        HistoryScreen
+            name:"history_screen"
+            id:history_screen

@@ -1,0 +1,103 @@
+<SearchScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#4BB864")
+            Rectangle:
+                size: .5, .1
+                pos: self.pos
+        TextInput:
+            id: search_content
+            hint_text: "search"
+            size_hint: .5, .1
+            pos_hint: {"top": .95, "center_x" :.45}
+        LabelSquareButton:
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex("#4BB864")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            text: "[u]Search[/u]"
+            markup: True
+            size_hint:  .13, .1
+            pos_hint: {"top": .95, "center_x" :.75}
+            on_release:
+                app.search_music()
+
+        FloatLayout:
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#50E973")
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(20, 20), (20, 20),( 20, 20), (20, 20)]
+            pos_hint: {"top": .8, "center_x": .5}
+            size_hint: .9, .6
+            ScrollView:
+                pos_hint: {"center_y": .5, "center_x": .5}
+                size_hint: .9, .9
+                GridLayout:
+                    id: banner_grid
+                    cols: 1
+                    spacing: 5,5
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: '60dp'
+                    row_force_default: True
+
+        FloatLayout:
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#4BB864")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint: 1., .15
+            pos_hint: {"top":.15,"left":.1}
+
+            LabelSquareButton:
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex("#4BB864")
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                text: "[u]Home[/u]"
+                markup: True
+                size_hint:  .4, 1
+                pos_hint: {"top": 1, "center_x" :.5}
+                on_release:
+                    app.change_screen("home_screen")
+
+            LabelSquareButton:
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex("#4BB864")
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                text: "[u]History[/u]"
+                markup: True
+                size_hint:  .3, 1
+                pos_hint: {"top": 1, "left" :1}
+                on_release:
+                    app.load_history()
+            LabelSquareButton:
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex("#4BB864")
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                text: "[u]Search[/u]"
+                markup: True
+                size_hint:  .3, 1
+                pos_hint: {"top": 1, "right" :1}
+                on_release:
+                    app.change_screen("search_screen")

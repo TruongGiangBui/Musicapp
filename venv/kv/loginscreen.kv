@@ -1,0 +1,46 @@
+
+<LoginScreen>:
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#FFFFFF")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        TextInput:
+            id: login_username
+            hint_text: "username"
+            size_hint: .5, .1
+            pos_hint: {"top": .8, "center_x" :.5}
+
+
+        TextInput:
+            id: login_password
+            password: True
+            hint_text: "password"
+            size_hint: .5, .1
+            pos_hint: {"top": .6, "center_x" :.5}
+
+        Label:
+            id: login_message
+            color: (1,0,0,1)
+            size_hint: .5, .1
+            pos_hint: {"top": .5, "center_x" :.5}
+
+        LabelButton:
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex("#4BB864")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius:[20]
+            text: "[u]Login[/u]"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .4, "center_x" :.5}
+            on_release:
+                app.login()
+
+
